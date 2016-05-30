@@ -266,7 +266,7 @@
 					_multiSelectToolbarVisible: Boolean,
 					_numberselectedIds: Number
 				},
-				ready: function(){
+				attached: function(){
 					this._datatable = Polymer.dom(this).querySelector("paper-datatable");
 					this._datatable.data = [];
 					this._datatable.addEventListener("data-changed", this._triggerSave.bind(this));

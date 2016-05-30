@@ -258,7 +258,7 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 					this.beenAttached = new Whenever();
 				},
 
-				ready: function() {
+				attached: function() {
 
 					var template = Polymer.dom(this).querySelector('template');
 					if(!template && this.type.toLowerCase() == 'array'){
@@ -421,8 +421,10 @@ This element is used inside of `<paper-datatable>` to declare the columns to be 
 								'This however requires the element to be located in a polymer element or `dom-bind`.')
 					}
 
-					this.dataHost._pdt_getArrayItemLabel = this._getArrayItemLabel;
-					this.dataHost._pdt_getCorrectTypeForInput = this._getCorrectTypeForInput;
+					if (typeof this.dataHost !== 'undefined') {
+						this.dataHost._pdt_getArrayItemLabel = this._getArrayItemLabel;
+						this.dataHost._pdt_getCorrectTypeForInput = this._getCorrectTypeForInput;
+					}
 
 				},
 				_getArrayItemLabel: function(column, value){

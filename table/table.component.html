@@ -1,0 +1,33 @@
+<paper-datatable-card [dataSource]="dataSource" [header]="header" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" #dataTableCard dir="ltr">
+    <div toolbar-main>
+        <paper-icon-button icon="add" (click)="addRowButtonClick()"></paper-icon-button>
+    </div>
+    <div toolbar-select>
+        <paper-icon-button icon="delete" (click)="deleteSelectedRowsButtonClick()"></paper-icon-button>
+        <paper-icon-button icon="add" (click)="addRowButtonClick()"></paper-icon-button>
+    </div>
+    <div toolbar-select-single>
+        <paper-icon-button icon="create" (click)="editRowButtonClick()"></paper-icon-button>
+    </div>
+
+    <paper-datatable
+            [selectable] = "selectable"
+            [multiSelection] = "multiSelection"
+            #dataTable>
+        <div no-results>
+            <h2 class="noDataHeader">
+            אין נתונים
+            </h2>
+        </div>
+
+        <paper-datatable-column *ngFor="let col of cols"
+                [header] = "col.name"
+                [property] = "col.field"
+                [editable] = "col.editable"
+                [dialog] = "col.editable"
+                [editIcon] = "col.editable"
+                [type] = "col.type"
+                [sortable] = "col.sortable">
+        </paper-datatable-column>
+    </paper-datatable>
+</paper-datatable-card>
